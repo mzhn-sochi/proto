@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "api/shop_suggestions/";
+
+message SuggestionOptions {
+  float lon = 1;
+  float lat = 2;
+  uint32 count = 3;
+}
+
+message Suggestion {
+  string title = 1;
+  string subtitle = 2;
+  string distance = 3;
+}
+
+message ShopSuggestionsResponse {
+  repeated Suggestion suggestions = 1;
+}
+
+service ShopSuggestionsService {
+  rpc GetSuggestion(SuggestionOptions) returns (ShopSuggestionsResponse);
+}

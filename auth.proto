@@ -5,8 +5,8 @@ package auth;
 option go_package="api/auth";
 
 enum Role {
-  ADMIN = 0;
-  USER = 1;
+  admin = 0;
+  user = 1;
 }
 
 message Empty {}
@@ -27,7 +27,7 @@ message SignOutRequest {
 
 message AuthRequest {
   string accessToken = 1;
-  string role = 2;
+  Role role = 2;
 }
 
 message RefreshRequest {

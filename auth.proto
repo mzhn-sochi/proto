@@ -1,3 +1,49 @@
 syntax = "proto3";
 
-option go_package = "api/auth";
+package auth;
+
+option go_package="api/auth";
+
+enum Role {
+  ADMIN = 0;
+  USER = 1;
+}
+
+message Empty {}
+
+message SignInRequest {
+  string phone = 1;
+  string password = 2;
+}
+
+message SignUpRequest {
+  string phone = 1;
+  string password = 2;
+}
+
+message SignOutRequest {
+  string accessToken = 1;
+}
+
+message AuthRequest {
+  string accessToken = 1;
+  string role = 2;
+}
+
+message RefreshRequest {
+  string refreshToken = 1;
+}
+
+message Tokens {
+  string access = 1;
+  string refresh = 2;
+}
+
+service Auth {
+  rpc SignIn(SignInRequest) returns (Tokens);
+  rpc SignUp(SignUpRequest) returns (Tokens);
+  rpc SignOut(SignOutRequest) returns (Empty);
+
+  rpc Auth(AuthRequest) returns (Empty);
+  rpc Refresh(RefreshRequest) returns (Tokens);
+}

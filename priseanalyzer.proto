@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "api/pricetaganalyzer";
+
+message ImageChunk {
+  bytes content = 1;
+}
+
+message Measure {
+  float amount = 1;
+  string unit = 2;
+}
+
+message ImageInfo {
+  string product = 1;
+  string description = 2;
+  float price = 3;
+  optional Measure measure = 4;
+  map<string, string> attributes = 5;
+}
+
+service PriceTagAnalyzerService {
+  rpc AnalyzeImage(stream ImageChunk) returns (ImageInfo);
+}

@@ -45,4 +45,5 @@ service Auth {
   rpc SignOut(SignOutRequest) returns (Empty);
 
   rpc Auth(AuthRequest) returns (Empty);
+  rpc Refresh(RefreshRequest) returns (Tokens);
 }

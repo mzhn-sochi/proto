@@ -1,0 +1,23 @@
+syntax = "proto3";
+option go_package="api/s3/";
+
+message Image {
+    bytes chunk = 1;
+}
+
+message Metadata {
+    string contentType = 1;
+}
+
+message Object {
+    Metadata meta = 1;
+    Image image = 2;
+}
+
+message ObjectInfo {
+    string name = 1;
+}
+
+service S3 {
+    rpc Upload(stream Object) returns(ObjectInfo);   
+}

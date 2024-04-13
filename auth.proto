@@ -19,6 +19,9 @@ message SignInRequest {
 message SignUpRequest {
   string phone = 1;
   string password = 2;
+  string lastName = 3;
+  string firstName = 4;
+  string middleName = 5;
 }
 
 message SignOutRequest {
@@ -44,6 +47,26 @@ message Tokens {
   string refresh = 2;
 }
 
+message User {
+  string id = 1;
+  string phone = 2;
+  string lastName = 3;
+  string firstName = 4;
+  string middleName = 5;
+}
+
+message FindUserByIdRequest {
+  string id = 1;
+}
+
+message FindUsersByIdsRequest {
+  repeated string ids = 1;
+}
+
+message FindUsersByIdsResponse {
+  repeated User users = 1;
+}
+
 service Auth {
   rpc SignIn(SignInRequest) returns (Tokens);
   rpc SignUp(SignUpRequest) returns (Tokens);
@@ -51,4 +74,7 @@ service Auth {
 
   rpc Auth(AuthRequest) returns (AuthResponse);
   rpc Refresh(RefreshRequest) returns (Tokens);
+
+  rpc FindUserById(FindUserByIdRequest) returns (User);
+  rpc FindUsersByIds(FindUsersByIdsRequest) returns (FindUsersByIdsResponse);
 }

@@ -13,16 +13,18 @@ message Ticket {
   string id = 1;
   string userId = 2; // uuid v7
   string imageUrl = 3;
-  string shopAddress = 4;
-  Statuses status = 5;
-  int64 createdAt = 6;
-  optional int64 updatedAt = 7;
-  optional string reason = 8;
+  string shopName = 4;
+  string shopAddress = 5;
+  Statuses status = 6;
+  int64 createdAt = 7;
+  optional int64 updatedAt = 8;
+  optional string reason = 9;
 }
 message CreateRequest {
   string userId = 1; // uuid v7
   string imageUrl = 2;
-  string shopAddr = 3;
+  string shopName = 3;
+  string shopAddr = 4;
 }
 message CreateResponse {
   string ticketId = 1;

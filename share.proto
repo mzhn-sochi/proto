@@ -1,6 +1,6 @@
 syntax = "proto3";
 package share;
-option go_package = "tickets/api/share";
+option go_package = "api/share";
 message Empty {}
 message Bounds {
   uint64 limit = 1;

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package ticket;
 import "share.proto";
-option go_package="tickets/api/ts";
+option go_package="api/ts";
 enum Statuses {
   WAITING_OCR = 0;
   WAITING_VALIDATION = 1;

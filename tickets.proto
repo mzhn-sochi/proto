@@ -1,0 +1,53 @@
+syntax = "proto3";
+package ticket;
+import "share.proto";
+option go_package="tickets/api/ts";
+enum Statuses {
+  PENDING = 0;
+  WAITING_OCR = 1;
+  WAITING_VALIDATION = 2;
+  WAITING_APPROVAL = 3;
+  CLOSED = 4;
+  REJECTED = 5;
+}
+message Ticket {
+  string id = 1;
+  string userId = 2; // uuid v7
+  string imageUrl = 3;
+  string shopAddress = 4;
+  int64 createdAt = 5;
+  optional int64 updatedAt = 6;
+}
+message CreateRequest {
+  string userId = 1; // uuid v7
+  string imageUrl = 2;
+  string shopAddr = 3;
+}
+message CreateResponse {
+  string ticketId = 1;
+}
+message CloseTicketRequest {
+  string ticketId = 1;
+}
+message Filter {
+  optional Statuses status = 1;
+  optional share.TimeRange timeRange = 2;
+  optional string userId = 3;
+}
+message ListRequest {
+  share.Bounds bounds = 1;
+  optional Filter filter = 2;
+}
+message ListResponse {
+  repeated Ticket tickets = 1;
+  int64 count = 2;
+}
+message FindByIdRequest {
+  string ticketId = 1;
+}
+service TicketService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc FindById(FindByIdRequest) returns (Ticket);
+  rpc CloseTicket(CloseTicketRequest) returns (share.Empty);
+}

@@ -3,12 +3,11 @@ package ticket;
 import "share.proto";
 option go_package="tickets/api/ts";
 enum Statuses {
-  PENDING = 0;
-  WAITING_OCR = 1;
-  WAITING_VALIDATION = 2;
-  WAITING_APPROVAL = 3;
-  CLOSED = 4;
-  REJECTED = 5;
+  WAITING_OCR = 0;
+  WAITING_VALIDATION = 1;
+  WAITING_APPROVAL = 2;
+  CLOSED = 3;
+  REJECTED = 4;
 }
 message Ticket {
   string id = 1;

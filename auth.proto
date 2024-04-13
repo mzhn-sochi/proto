@@ -56,6 +56,14 @@ message FindUserByIdRequest {
   string id = 1;
 }
 
+message FindUsersByIdsRequest {
+  repeated string ids = 1;
+}
+
+message FindUsersByIdsResponse {
+  repeated User users = 1;
+}
+
 service Auth {
   rpc SignIn(SignInRequest) returns (Tokens);
   rpc SignUp(SignUpRequest) returns (Tokens);
@@ -65,4 +73,5 @@ service Auth {
   rpc Refresh(RefreshRequest) returns (Tokens);
 
   rpc FindUserById(FindUserByIdRequest) returns (User);
+  rpc FindUsersByIds(FindUsersByIdsRequest) returns (FindUsersByIdsResponse);
 }

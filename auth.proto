@@ -27,7 +27,7 @@ message SignOutRequest {
 
 message AuthRequest {
   string accessToken = 1;
-  Role role = 2;
+  repeated Role role = 2;
 }
 
 message RefreshRequest {

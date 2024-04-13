@@ -47,9 +47,9 @@ message Tokens {
 message User {
   string id = 1;
   string phone = 2;
-  string lastName = 3;
-  string firstName = 4;
-  string middleName = 5;
+  optional string lastName = 3;
+  optional string firstName = 4;
+  optional string middleName = 5;
 }
 
 message FindUserByIdRequest {

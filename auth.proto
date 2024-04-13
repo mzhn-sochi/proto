@@ -30,6 +30,11 @@ message AuthRequest {
   Role role = 2;
 }
 
+message AuthResponse {
+  string userId = 1;
+  Role role = 2;
+}
+
 message RefreshRequest {
   string refreshToken = 1;
 }
@@ -44,6 +49,6 @@ service Auth {
   rpc SignUp(SignUpRequest) returns (Tokens);
   rpc SignOut(SignOutRequest) returns (Empty);
 
-  rpc Auth(AuthRequest) returns (Empty);
+  rpc Auth(AuthRequest) returns (AuthResponse);
   rpc Refresh(RefreshRequest) returns (Tokens);
 }

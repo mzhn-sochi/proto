@@ -14,8 +14,9 @@ message Ticket {
   string userId = 2; // uuid v7
   string imageUrl = 3;
   string shopAddress = 4;
-  int64 createdAt = 5;
-  optional int64 updatedAt = 6;
+  Statuses status = 5;
+  int64 createdAt = 6;
+  optional int64 updatedAt = 7;
 }
 message CreateRequest {
   string userId = 1; // uuid v7

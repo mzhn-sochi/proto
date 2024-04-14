@@ -1,7 +1,7 @@
 syntax = "proto3";
 package ticket;
 
-option go_package="api/ts";
+option go_package = "api/ts";
 
 enum Statuses {
   WAITING_OCR = 0;
@@ -10,6 +10,16 @@ enum Statuses {
   CLOSED = 3;
   REJECTED = 4;
 }
+
+message Item {
+  string product = 1;
+  string description = 2;
+  float price = 3;
+  float amount = 4;
+  string unit = 5;
+  uint32 overprice = 6;
+}
+
 message Ticket {
   string id = 1;
   string userId = 2; // uuid v7
@@ -20,6 +30,7 @@ message Ticket {
   int64 createdAt = 7;
   optional int64 updatedAt = 8;
   optional string reason = 9;
+  optional Item item = 10;
 }
 message CreateRequest {
   string userId = 1; // uuid v7
